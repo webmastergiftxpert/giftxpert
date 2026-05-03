@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
@@ -6,21 +6,8 @@ import { ArrowRight, Sparkles } from "lucide-react";
 const HERO_POSTER = "/videos/giftxpert-hero-poster.jpg";
 const HERO_VIDEO = "/videos/giftxpert-hero.mp4";
 
-const FALLBACK_IMAGES = [
-  "https://images.unsplash.com/photo-1647541706162-f5ad608dd421?auto=format&fit=crop&w=1800&q=80",
-  "https://images.unsplash.com/photo-1773450970959-cef81e9b1053?auto=format&fit=crop&w=1800&q=80",
-];
-
 export default function Hero({ onEnquire }) {
   const videoRef = useRef(null);
-  const [videoFailed, setVideoFailed] = useState(false);
-  const [idx, setIdx] = useState(0);
-
-  useEffect(() => {
-    if (!videoFailed) return;
-    const t = setInterval(() => setIdx((i) => (i + 1) % FALLBACK_IMAGES.length), 5000);
-    return () => clearInterval(t);
-  }, [videoFailed]);
 
   return (
     <section className="relative overflow-hidden mesh-bg pt-16 md:pt-20" data-testid="hero-section">
@@ -113,51 +100,24 @@ export default function Hero({ onEnquire }) {
           </motion.div>
         </div>
 
-        {/* RIGHT — video hero with image fallback */}
+        {/* RIGHT — video hero */}
         <div className="lg:col-span-6 xl:col-span-5 relative">
           <div className="relative aspect-[4/5] w-full max-w-xl mx-auto">
-            {!videoFailed ? (
-              <motion.div
-                className="absolute inset-0 overflow-hidden bg-slate-100"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1.2 }}
-              >
-                <video
-                  ref={videoRef}
-                  src={HERO_VIDEO}
-                  poster={HERO_POSTER}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  onError={() => setVideoFailed(true)}
-                  className="w-full h-full object-cover"
-                  data-testid="hero-video"
-                />
-                {/* Soft overlay for depth + text readability on adjacent column */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/15 via-transparent to-transparent pointer-events-none" />
-              </motion.div>
-            ) : (
-              FALLBACK_IMAGES.map((src, i) => (
-                <motion.div
-                  key={src}
-                  className="absolute inset-0 overflow-hidden"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: i === idx ? 1 : 0 }}
-                  transition={{ duration: 1.2 }}
-                >
-                  <motion.img
-                    src={src}
-                    alt="corporate gift"
-                    className="w-full h-full object-cover"
-                    animate={{ scale: i === idx ? 1.05 : 1 }}
-                    transition={{ duration: 6, ease: "easeOut" }}
-                  />
-                </motion.div>
-              ))
-            )}
+            <div className="absolute inset-0 overflow-hidden bg-slate-100">
+              <video
+                ref={videoRef}
+                src={HERO_VIDEO}
+                poster={HERO_POSTER}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="w-full h-full object-cover"
+                data-testid="hero-video"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/15 via-transparent to-transparent pointer-events-none" />
+            </div>
             <div className="absolute inset-0 ring-1 ring-slate-200/60 pointer-events-none" />
             {/* Floating card */}
             <motion.div

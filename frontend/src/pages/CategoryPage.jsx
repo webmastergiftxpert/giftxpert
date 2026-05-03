@@ -67,7 +67,7 @@ export default function CategoryPage() {
           <h2 className="font-outfit text-2xl md:text-3xl font-light mb-10">
             Explore by type
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {cat.subcategories?.map((sub, i) => (
               <motion.div
                 key={sub.slug}
@@ -79,17 +79,29 @@ export default function CategoryPage() {
                 <Link
                   to={`/category/${cat.slug}/${sub.slug}`}
                   data-testid={`subcategory-card-${sub.slug}`}
-                  className="group block bg-white border border-slate-200 p-7 hover:border-slate-900 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+                  className="group block bg-white border border-slate-200 overflow-hidden hover:border-slate-900 hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="text-[10px] tracking-[0.2em] uppercase text-gold font-semibold mb-3">
-                    0{i + 1}
-                  </div>
-                  <h3 className="font-outfit text-xl font-medium text-slate-900 group-hover:text-slate-900">
-                    {sub.name}
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-600 leading-relaxed">{sub.description}</p>
-                  <div className="mt-5 inline-flex items-center gap-1.5 text-xs tracking-[0.15em] uppercase font-semibold text-slate-900">
-                    Explore <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                  {sub.image && (
+                    <div className="aspect-[4/3] bg-slate-100 overflow-hidden">
+                      <img
+                        src={sub.image}
+                        alt={sub.name}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <div className="text-[10px] tracking-[0.2em] uppercase text-gold font-semibold mb-2">
+                      0{i + 1}
+                    </div>
+                    <h3 className="font-outfit text-lg font-medium text-slate-900">
+                      {sub.name}
+                    </h3>
+                    <p className="mt-2 text-sm text-slate-600 leading-relaxed line-clamp-2">{sub.description}</p>
+                    <div className="mt-4 inline-flex items-center gap-1.5 text-xs tracking-[0.15em] uppercase font-semibold text-slate-900">
+                      Explore <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                    </div>
                   </div>
                 </Link>
               </motion.div>

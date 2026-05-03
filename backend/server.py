@@ -52,6 +52,7 @@ class Subcategory(BaseModel):
     slug: str
     name: str
     description: str
+    image: Optional[str] = None
 
 
 class Category(BaseModel):

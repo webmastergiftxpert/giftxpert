@@ -8,18 +8,12 @@ export default function Footer() {
     <footer className="bg-slate-950 text-slate-300 mt-0" data-testid="site-footer">
       <div className="gx-container py-16 md:py-20 grid grid-cols-1 md:grid-cols-4 gap-10">
         <div className="md:col-span-2">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-10 h-10 bg-white flex items-center justify-center">
-              <span className="font-outfit font-semibold text-lg text-slate-900">G</span>
-            </div>
-            <div>
-              <div className="font-outfit text-xl font-semibold text-white">
-                Gift<span className="text-gold">Xpert</span>
-              </div>
-              <div className="text-[10px] tracking-[0.2em] uppercase text-slate-500">
-                Corporate Gifting
-              </div>
-            </div>
+          <div className="inline-flex items-center gap-3 mb-5 bg-white p-3 pr-5">
+            <img
+              src="/assets/giftxpert-logo.png"
+              alt="GiftXpert"
+              className="h-14 w-auto object-contain"
+            />
           </div>
           <p className="text-sm leading-relaxed max-w-md text-slate-400">
             Simplifying corporate gifting for modern businesses. End-to-end bulk gifting solutions

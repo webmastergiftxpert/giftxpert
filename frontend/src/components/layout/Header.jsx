@@ -15,18 +15,13 @@ export default function Header({ onEnquire }) {
   return (
     <header className="glass-header sticky top-0 z-50" data-testid="site-header">
       <div className="gx-container flex items-center justify-between py-4 md:py-5">
-        <Link to="/" className="flex items-center gap-2 group" data-testid="logo-link">
-          <div className="w-9 h-9 bg-slate-900 flex items-center justify-center">
-            <span className="text-white font-outfit font-semibold text-lg">G</span>
-          </div>
-          <div className="flex flex-col leading-tight">
-            <span className="font-outfit text-lg font-semibold text-slate-900">
-              Gift<span className="text-gold">Xpert</span>
-            </span>
-            <span className="text-[10px] tracking-[0.2em] uppercase text-slate-400">
-              Corporate Gifting
-            </span>
-          </div>
+        <Link to="/" className="flex items-center gap-3 group" data-testid="logo-link">
+          <img
+            src="/assets/giftxpert-logo.png"
+            alt="GiftXpert"
+            className="h-12 md:h-14 w-auto object-contain"
+            style={{ mixBlendMode: "multiply" }}
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-10">

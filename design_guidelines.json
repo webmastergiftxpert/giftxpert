@@ -1,0 +1,151 @@
+{
+  "theme": "LIGHT",
+  "archetype": "Archetype 4 (Swiss & High-Contrast) adapted for Premium Corporate / Luxury (Light Theme)",
+  "emotional_tone": "Premium, authoritative, clean, sophisticated, and trusted.",
+  "typography": {
+    "heading_font": "Outfit",
+    "body_font": "Manrope",
+    "rules": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight font-light or font-medium text-slate-900",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight text-slate-900",
+      "h3": "text-xl sm:text-2xl font-medium",
+      "body": "text-base leading-relaxed text-slate-600",
+      "overline": "text-xs tracking-[0.2em] uppercase font-semibold text-slate-400"
+    },
+    "banned_fonts": ["Inter", "Roboto", "Open Sans", "Lato", "Syne"]
+  },
+  "colors": {
+    "background": {
+      "primary": "#FFFFFF",
+      "secondary": "#FAFAFA",
+      "tertiary": "#F3F4F6",
+      "overlay": "rgba(255, 255, 255, 0.4)",
+      "gradient_soft": "linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 50%, #F1F5F9 100%)"
+    },
+    "text": {
+      "primary": "#0F172A",
+      "secondary": "#475569",
+      "muted": "#94A3B8",
+      "inverse": "#FFFFFF"
+    },
+    "accent": {
+      "primary": "#0F172A",
+      "secondary": "#C5A059",
+      "hover": "#1E293B",
+      "border": "#E2E8F0"
+    },
+    "rules": [
+      "NO default SaaS blue. Use Slate (#0F172A) combined with subtle Gold/Champagne (#C5A059) for premium accents.",
+      "Gradients must be extremely soft, almost imperceptible 'mesh' style (white to slate-50).",
+      "Always set hover text color explicitly."
+    ]
+  },
+  "layout_spacing": {
+    "philosophy": "Generous Spacing Philosophy - Use 2-3x more spacing. Containers with borders must have p-6 or p-8.",
+    "section_padding": "py-24 md:py-32",
+    "bento_grid_categories": {
+      "mode": "MODE A: THE 'TETRIS' GRID",
+      "description": "Asymmetrical 9-card bento grid for the 9 Categories to look premium rather than basic 3x3.",
+      "span_logic": [
+        "Employee Gifting: col-span-full md:col-span-8 row-span-2",
+        "Client/Customer Gifting: col-span-full md:col-span-4 row-span-2",
+        "Festive & Seasonal: col-span-full md:col-span-4 row-span-1",
+        "Promotional Gifts: col-span-full md:col-span-4 row-span-1",
+        "Welcome Kits: col-span-full md:col-span-4 row-span-1",
+        "Reward & Recognition: col-span-full md:col-span-6 row-span-1",
+        "Sustainable Gifting: col-span-full md:col-span-6 row-span-1",
+        "Luxury Premium: col-span-full md:col-span-6 row-span-1",
+        "Wellness & Lifestyle: col-span-full md:col-span-6 row-span-1"
+      ]
+    }
+  },
+  "surfaces_and_components": {
+    "cards": {
+      "style": "Glassmorphism or ultra-subtle Neumorphism. 1px delicate inner stroke (border-slate-200), soft ambient shadow (shadow-sm). For images, do not use heavy overlays.",
+      "hover": "-translate-y-1 shadow-xl transition-all duration-300 ease-out"
+    },
+    "header": {
+      "style": "Crystal Glass. backdrop-blur-xl bg-white/70, 1px bottom border border-slate-100. Sticky positioning with z-50."
+    },
+    "buttons": {
+      "primary": "bg-slate-900 text-white hover:bg-slate-800 rounded-none or very slight rounding (rounded-sm). Minimalist premium.",
+      "secondary": "bg-white text-slate-900 border border-slate-200 hover:border-slate-400 rounded-sm."
+    },
+    "forms": {
+      "strategy": "Use Shadcn Form, Input, Select. Heavily strip the 'Vercel-look'. Make inputs feel like premium editorial forms (e.g., bottom-border only, or very light gray bg with no border until focus)."
+    },
+    "trust_section": {
+      "strategy": "The 'Editorial Ribbon' Marquee. Use react-fast-marquee. Serif or clean Sans, small text (text-sm), massive gaps (gap-24). Warm/Pale background."
+    }
+  },
+  "interactions_and_motion": {
+    "framer_motion": true,
+    "hero": "Slow zoom on hero background images. Staggered fade-up for hero text (H1, Subtitle, CTA).",
+    "scroll": "Use Lenis for smooth scrolling if possible. Elements should fade in gently with subtle upward translation on enter viewport.",
+    "hover": "Image cards should slightly scale up their inner image (scale-105) while the container stays fixed."
+  },
+  "pages_to_build": [
+    "Homepage (Hero motion banner, Trust Ribbon, 9 Categories Bento Grid, 5-Step Process, CTA)",
+    "Category Page (Banner + Subcategory cards)",
+    "Product Listing (Grid of product cards)",
+    "Product Detail (Gallery, info, MOQ, Enquire CTA)",
+    "About Us",
+    "Contact (Form + Map/Address details)"
+  ],
+  "key_features": [
+    "Enquiry Form Modal (Shadcn Dialog)",
+    "Floating WhatsApp Button (Fixed bottom right)",
+    "Lead Generation focus (No Cart/Checkout)"
+  ],
+  "media": {
+    "icons": "lucide-react or @phosphor-icons/react (Phosophor preferred for premium look)",
+    "image_urls": {
+      "hero_backgrounds": [
+        {
+          "url": "https://images.unsplash.com/photo-1647541706162-f5ad608dd421?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTN8MHwxfHNlYXJjaHw0fHxwcmVtaXVtJTIwY29ycG9yYXRlJTIwZ2lmdCUyMGJveHxlbnwwfHx8fDE3Nzc4MDY1NDN8MA&ixlib=rb-4.1.0&q=85",
+          "description": "Premium black corporate gift box",
+          "category": "Hero Banner / Luxury Premium Category"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1773450970959-cef81e9b1053?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBnaWZ0JTIwaGFtcGVyfGVufDB8fHx8MTc3NzgwNjU0M3ww&ixlib=rb-4.1.0&q=85",
+          "description": "Luxury hamper with wine and food",
+          "category": "Hero Banner / Festive Gifting Category"
+        }
+      ],
+      "categories": [
+        {
+          "url": "https://images.unsplash.com/photo-1637904731042-2ef367b8c00c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTN8MHwxfHNlYXJjaHwxfHxwcmVtaXVtJTIwY29ycG9yYXRlJTIwZ2lmdCUyMGJveHxlbnwwfHx8fDE3Nzc4MDY1NDN8MA&ixlib=rb-4.1.0&q=85",
+          "description": "White box filled with items",
+          "category": "Welcome Kits / Employee Gifting"
+        },
+        {
+          "url": "https://images.pexels.com/photos/31438304/pexels-photo-31438304.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+          "description": "Sustainable cardboard boxes",
+          "category": "Sustainable/Eco-Friendly Gifting"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1760602672748-6a570286ce73?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTN8MHwxfHNlYXJjaHwyfHxwcmVtaXVtJTIwY29ycG9yYXRlJTIwZ2lmdCUyMGJveHxlbnwwfHx8fDE3Nzc4MDY1NDN8MA&ixlib=rb-4.1.0&q=85",
+          "description": "Orange gift box ribbon",
+          "category": "Reward & Recognition"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1719622144274-2408ecf6f6d9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTN8MHwxfHNlYXJjaHwzfHxwcmVtaXVtJTIwY29ycG9yYXRlJTIwZ2lmdCUyMGJveHxlbnwwfHx8fDE3Nzc4MDY1NDN8MA&ixlib=rb-4.1.0&q=85",
+          "description": "Wooden box bamboo keychain",
+          "category": "Promotional/Branding Gifts"
+        }
+      ]
+    }
+  },
+  "testing": {
+    "data_testid_rule": "All interactive and key informational elements MUST include a data-testid attribute in kebab-case."
+  },
+  "instructions_to_main_agent": [
+    "Install framer-motion, lucide-react, react-fast-marquee.",
+    "Implement the Layout with an overarching <main> that uses light premium background.",
+    "For the Hero Section, create a staggered text entrance with Framer Motion, and a subtle automatic image crossfade (motion banner) in the background. Ensure text is highly readable by using a soft gradient overlay (bg-white/40 with backdrop-blur-sm if needed, or pure white with strong contrast text).",
+    "Build the 9 Categories section exactly using the specified BENTO GRID logic for spans to prevent it from looking like a standard boring grid.",
+    "Use pure HTML + Tailwind for marketing layouts (Hero, Bento Grid), and Shadcn for Interactive logic (Forms, Modals).",
+    "Contact Details: 1st floor Enkay Tower, Plot No. B&B1, Phase V, Vanijya Nikunj, Gurugram, Haryana 122016 | Phone: +91 7296976875 | Email: sales@giftxpert.co",
+    "Replace generic default fonts with Outfit (Headings) and Manrope (Body)."
+  ]
+}

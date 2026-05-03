@@ -8,11 +8,11 @@ export default function Footer() {
     <footer className="bg-slate-950 text-slate-300 mt-0" data-testid="site-footer">
       <div className="gx-container py-16 md:py-20 grid grid-cols-1 md:grid-cols-4 gap-10">
         <div className="md:col-span-2">
-          <div className="inline-flex items-center gap-3 mb-5 bg-white p-3 pr-5">
+          <div className="mb-5">
             <img
               src="/assets/giftxpert-logo.png"
               alt="GiftXpert"
-              className="h-14 w-auto object-contain"
+              className="h-16 w-auto object-contain brightness-0 invert"
             />
           </div>
           <p className="text-sm leading-relaxed max-w-md text-slate-400">

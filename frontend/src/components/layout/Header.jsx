@@ -20,7 +20,6 @@ export default function Header({ onEnquire }) {
             src="/assets/giftxpert-logo.png"
             alt="GiftXpert"
             className="h-12 md:h-14 w-auto object-contain"
-            style={{ mixBlendMode: "multiply" }}
           />
         </Link>
 

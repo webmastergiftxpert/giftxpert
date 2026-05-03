@@ -1,54 +1,72 @@
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { Toaster } from "sonner";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
+import EnquiryDialog from "@/components/EnquiryDialog";
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
+import HomePage from "@/pages/HomePage";
+import CategoriesPage from "@/pages/CategoriesPage";
+import CategoryPage from "@/pages/CategoryPage";
+import ProductListingPage from "@/pages/ProductListingPage";
+import ProductDetailPage from "@/pages/ProductDetailPage";
+import AboutPage from "@/pages/AboutPage";
+import ContactPage from "@/pages/ContactPage";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname]);
+  return null;
+}
+
+function Shell() {
+  const [enquiryOpen, setEnquiryOpen] = useState(false);
+  const [enquiryProduct, setEnquiryProduct] = useState(null);
+
+  const openEnquiry = (product = null) => {
+    setEnquiryProduct(product || null);
+    setEnquiryOpen(true);
   };
 
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
   return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
-
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
+    <div className="min-h-screen flex flex-col bg-white">
+      <Header onEnquire={() => openEnquiry()} />
+      <ScrollToTop />
+      <main className="flex-1">
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
+          <Route path="/" element={<HomePage onEnquire={() => openEnquiry()} />} />
+          <Route path="/categories" element={<CategoriesPage />} />
+          <Route path="/category/:slug" element={<CategoryPage />} />
+          <Route path="/category/:slug/products" element={<ProductListingPage />} />
+          <Route path="/category/:slug/:sub" element={<ProductListingPage />} />
+          <Route path="/product/:slug" element={<ProductDetailPage onEnquire={openEnquiry} />} />
+          <Route path="/about" element={<AboutPage onEnquire={() => openEnquiry()} />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={
+            <div className="gx-container py-32 text-center" data-testid="not-found">
+              <h1 className="font-outfit text-5xl font-light">404</h1>
+              <p className="text-slate-600 mt-3">Page not found.</p>
+            </div>
+          } />
         </Routes>
-      </BrowserRouter>
+      </main>
+      <Footer />
+      <WhatsAppFloat />
+      <EnquiryDialog open={enquiryOpen} onOpenChange={setEnquiryOpen} product={enquiryProduct} />
+      <Toaster position="top-right" richColors closeButton />
     </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Shell />
+    </BrowserRouter>
+  );
+}
